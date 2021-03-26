@@ -14,7 +14,7 @@ export function Counter(props) {
   );
 
   return (
-    <div>
+    <div className='counter-component'>
       <div>
         { counter }
       </div>

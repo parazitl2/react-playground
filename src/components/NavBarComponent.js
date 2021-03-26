@@ -28,3 +28,9 @@ NavBarComponent.propTypes = {
     username: PropTypes.string
   })
 };
+
+NavBarComponent.defaultProps = {
+  user: {
+    username: "Stranger"
+  }
+};

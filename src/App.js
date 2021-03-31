@@ -7,7 +7,7 @@ import './App.css';
 import { FeedContainer } from './components/FeedContainer';
 import { NotificationComponent } from './components/NotificationComponent';
 
-function App({ fetchUser }) {
+function App({ fetchUser, onLogin, onLogout }) {
   const [user, setUser] = useState();
 
   useEffect(() => {
@@ -29,7 +29,11 @@ function App({ fetchUser }) {
 
   return (
     <div>
-      <NavBarComponent user={user} />
+      <NavBarComponent 
+        user={user}
+        onLogin={onLogin}
+        onLogout={onLogout}
+      />
       {/* <ArticleOverviewComponent
         title={"Test title"}
         content={"String"}

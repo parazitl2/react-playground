@@ -1,4 +1,4 @@
-import { CardComponent } from './CardComponent';
+import { CardComponent } from '../CardComponent/CardComponent';
 import PropTypes from 'prop-types';
 
 export function FeedComponent ({ articles }) {

@@ -15,7 +15,6 @@ export function Login({ login, ...restProps}) {
   }, [setFormData]);
 
   const handleSubmit = useCallback((event) => {
-    alert(`Name ${formData.username} sent password ${formData.password}!`);
     login && login(formData.username, formData.password);
     event.preventDefault();
   }, [formData, login]);

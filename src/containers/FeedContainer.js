@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { FeedComponent } from "./FeedComponent";
+import { FeedComponent } from "../components/FeedComponent/FeedComponent";
+import PropTypes from 'prop-types';
 
 export const FeedContainer = ({ fetchArticles }) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    setArticles(fetchArticles());
+    fetchArticles().then(setArticles);
   }, [setArticles, fetchArticles]);
 
   return (
@@ -13,6 +14,10 @@ export const FeedContainer = ({ fetchArticles }) => {
   );
 };
 
+FeedContainer.propTypes = {
+  fetchArticles: PropTypes.func
+};
+
 FeedContainer.defaultProps = {
   fetchArticles: () => []
-}
+};

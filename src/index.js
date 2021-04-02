@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/AppComponent/App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AppRouterComponent } from './components/AppRouterComponent/AppRouterComponent'
+
+const isAuthenticated = true;
 
 ReactDOM.render(
-  // <React.StrictMode>
-    <App fetchUser={() => ({ username: 'Bill' })} />,
+  // <React.StrictMode>,
+  <AppRouterComponent isAuthenticated={isAuthenticated}/>,
   // </React.StrictMode>,
   document.getElementById('root')
 );

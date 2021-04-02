@@ -1,9 +1,10 @@
+import styles from './Notification.module.css';
 
-export const NotificationComponent = ({ children, buttons }) => {
+export const NotificationComponent = ({ render, buttons, isUrgent }) => {
   return (
-    <div className="notification">
+    <div className={styles.notification}>
       <div>
-        {children}
+        {render(isUrgent)}
       </div>
       <div>
         {buttons}

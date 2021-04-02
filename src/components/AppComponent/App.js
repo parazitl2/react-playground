@@ -6,14 +6,22 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { FeedContainer } from '../../containers/FeedContainer';
 import { NotificationComponent } from '../NotificationComponent/NotificationComponent';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App({ fetchUser }) {
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isUrgent, setIsUrgent] = useState(false);
 
   // useEffect(() => {
   //   setUser(() => fetchUser());
   // }, [fetchUser]);
+
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => setIsUrgent(isUrgent => !isUrgent), 3000);
+
+  //   return () => clearInterval(intervalId);
+  // }, [setIsUrgent]);
 
   const fetchArticles = () => Promise.resolve([
     {
@@ -46,18 +54,27 @@ function App({ fetchUser }) {
         createdAt={"19.19.19"}
         imageUrl={"none"}
       /> */}
-      {
+      {/* {
         isLoggedIn
           ? <FeedContainer fetchArticles={fetchArticles}/>
           : <Login login={login}/>
-      }
+      } */}
+      <FeedContainer fetchArticles={fetchArticles}/>
       {/* <Counter /> */}
-      <NotificationComponent buttons={[
-        <button onClick={() => alert("Wow")}>Wow</button>,
-        <button onClick={() => alert("fuu")}>Fu</button>
-      ]}>
-        <h1>Ji!</h1>
-        <p>whazzapp?</p>
+      <NotificationComponent 
+        buttons={[
+          <button onClick={() => alert("Wow")}>Wow</button>,
+          <button onClick={() => alert("fuu")}>Fu</button>
+        ]}
+        render={(isUrgent) => (
+          <p style={{ color: isUrgent ? 'red' : 'black'}}>
+            Some notification
+          </p>
+        )}
+        isUrgent={isUrgent}
+      >
+        {/* <h1>Ji!</h1>
+        <p>whazzapp?</p> */}
       </NotificationComponent>
     </div>
   );

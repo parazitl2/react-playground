@@ -4,13 +4,18 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AppRouterComponent } from './components/AppRouterComponent/AppRouterComponent'
+import store from './redux/store';
 
-ReactDOM.render(
-  // <React.StrictMode>,
-  <AppRouterComponent isAuthenticated={false}/>,
-  // </React.StrictMode>,
+const render = () => ReactDOM.render(
+  <React.StrictMode>,
+    <AppRouterComponent isAuthenticated={store.isAuthenticated}/>,
+  </React.StrictMode>,
   document.getElementById('root')
 );
+
+store.subscribe(render);
+
+render();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

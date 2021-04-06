@@ -7,10 +7,11 @@ import './App.css';
 import { FeedContainer } from '../../containers/FeedContainer';
 import { NotificationComponent } from '../NotificationComponent/NotificationComponent';
 import { BrowserRouter as Router } from 'react-router-dom';
+import store from '../../redux/store';
 
-function App({ fetchUser }) {
-  const [user, setUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+function App(props) {
+  // const [user, setUser] = useState({});
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isUrgent, setIsUrgent] = useState(false);
 
   // useEffect(() => {
@@ -36,17 +37,17 @@ function App({ fetchUser }) {
     },
   ]);
 
-  const login = (username, password) => {
-    setUser({
-      ...user,
-      username: username || 'Shy_pussy'
-    });
-    setIsLoggedIn(true);
-  };
+  // const login = (username, password) => {
+  //   setUser({
+  //     ...user,
+  //     username: username || 'Shy_pussy'
+  //   });
+  //   setIsLoggedIn(true);
+  // };
 
   return (
     <div>
-      <NavBarComponent user={user} isLoggedIn={isLoggedIn} />
+      <NavBarComponent user={store.user.username} isLoggedIn={store.isLoggedIn} />
       {/* <ArticleOverviewComponent
         title={"Test title"}
         content={"String"}

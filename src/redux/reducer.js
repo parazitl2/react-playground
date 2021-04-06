@@ -5,13 +5,15 @@ const userReducer = (store = {}, action) => {
     case USER_LOGIN:
       return {
         ...store,
-        isLoggedIn: true
+        user: action.user,
+        isAuthenticated: true
       };
 
     case USER_LOGOUT: 
       return {
         ...store,
-        isLoggedIn: false
+        user: null,
+        isAuthenticated: false
       };
 
     default: 

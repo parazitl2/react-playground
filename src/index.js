@@ -5,11 +5,9 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AppRouterComponent } from './components/AppRouterComponent/AppRouterComponent'
 
-const isAuthenticated = true;
-
 ReactDOM.render(
   // <React.StrictMode>,
-  <AppRouterComponent isAuthenticated={isAuthenticated}/>,
+  <AppRouterComponent isAuthenticated={false}/>,
   // </React.StrictMode>,
   document.getElementById('root')
 );

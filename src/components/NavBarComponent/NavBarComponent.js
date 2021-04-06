@@ -7,7 +7,7 @@ export function NavBarComponent({ user, isLoggedIn }) {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  console.log(user);
+  console.log(user, isLoggedIn);
   return (
     <Navbar color='light' light expand="md">
       <NavbarBrand href="/">WTF?</NavbarBrand>
@@ -15,7 +15,16 @@ export function NavBarComponent({ user, isLoggedIn }) {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink href="/components/">Components</NavLink >
+            <NavLink href="/feed">Feed</NavLink >
+          </NavItem>
+          <NavItem>
+            <NavLink href="/wow">Wow</NavLink >
+          </NavItem>
+          <NavItem>
+            <NavLink href="/check/">Check</NavLink >
+          </NavItem>
+          <NavItem>
+            <NavLink href="/login/">Login</NavLink >
           </NavItem>
         </Nav>
       </Collapse>

@@ -3,30 +3,24 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { AuthLayoutComponent } from '../../components/AuthLayoutComponent/AuthLayoutComponent';
 import App from '../../components/AppComponent/App';
 import store from '../../redux/store';
-import { actionLogin } from '../../redux/actions';
 
 
-export const AppRouterComponent = ({ isAuthenticated }) => {
-  console.log(isAuthenticated)
+export const AppRouterComponent = ({ isAuthenticated = false }) => {
+  console.log('AppRouter is auth:', isAuthenticated)
   return (
     <Router>
       <Switch>
-        {/* <AuthLayoutComponent 
-          isAuthenticated={isAuthenticated} 
-          path='/' 
-          render={() => (<App fetchUser={() => ({ username: 'Bill' })}/>)} 
-          exact 
-        /> */}
-        {
-          isAuthenticated 
-          ? <Route path='/' render={() => (<App fetchUser={() => ({ username: 'Bill' })}/>)} exact />
-          : <Route path='/login' render={() => <Login login={(username, passwd) => store.dispatch(actionLogin({ username }))}/>} />
-        }
+        <Route path='/login' render={() => <Login />} />
+        <AuthLayoutComponent
+          path='/login'
+          component={Login}
+          isAuthenticated={isAuthenticated}
+        />
+        <Route path='/feed' render={() => (<App fetchUser={() => ({ username: 'Bill' })}/>)} />
         <Route path='/wow' component={() => (<p>Wow</p>)} />
         <Route path='/check' component={() => (<p>Laykaboss</p>)} />
-        <Route path='/login' render={() => <Login login={(username, passwd) => store.dispatch(actionLogin({ username }))}/>} />
+        <Redirect exact from='/' to='/feed' />
       </Switch>
-      {/* <App fetchUser={() => ({ username: 'Bill' })} /> */}
     </Router>
   );
 }

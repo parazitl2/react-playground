@@ -1,6 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
+import { actionLogin } from '../../redux/actions';
+import store from '../../redux/store';
 
-export function Login({ login, ...restProps}) {
+export function Login({ ...restProps}) {
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -14,8 +16,10 @@ export function Login({ login, ...restProps}) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   }, [setFormData]);
 
+  const login = (username, passwd) => store.dispatch(actionLogin({ username }));
+
   const handleSubmit = useCallback((event) => {
-    login && login(formData.username, formData.password);
+    login(formData.username, formData.password);
     event.preventDefault();
   }, [formData, login]);
 

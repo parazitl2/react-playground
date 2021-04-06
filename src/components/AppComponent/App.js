@@ -2,16 +2,13 @@ import { Counter } from '../CounterComponent/Counter';
 import { Login } from '../LoginComponent/Login';
 import { ArticleOverviewComponent } from '../ArticleOverviewComponent/ArticleOverviewComponent';
 import { NavBarComponent } from '../NavBarComponent/NavBarComponent';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import { FeedContainer } from '../../containers/FeedContainer';
 import { NotificationComponent } from '../NotificationComponent/NotificationComponent';
-import { BrowserRouter as Router } from 'react-router-dom';
 import store from '../../redux/store';
 
 function App(props) {
-  // const [user, setUser] = useState({});
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isUrgent, setIsUrgent] = useState(false);
 
   // useEffect(() => {
@@ -47,7 +44,7 @@ function App(props) {
 
   return (
     <div>
-      <NavBarComponent user={store.user.username} isLoggedIn={store.isLoggedIn} />
+      <NavBarComponent user={store.getState().user} isLoggedIn={store.getState().isAuthenticated} />
       {/* <ArticleOverviewComponent
         title={"Test title"}
         content={"String"}
@@ -55,17 +52,12 @@ function App(props) {
         createdAt={"19.19.19"}
         imageUrl={"none"}
       /> */}
-      {/* {
-        isLoggedIn
-          ? <FeedContainer fetchArticles={fetchArticles}/>
-          : <Login login={login}/>
-      } */}
       <FeedContainer fetchArticles={fetchArticles}/>
       {/* <Counter /> */}
       <NotificationComponent 
         buttons={[
-          <button onClick={() => alert("Wow")}>Wow</button>,
-          <button onClick={() => alert("fuu")}>Fu</button>
+          <button key={1} onClick={() => alert("Wow")}>Wow</button>,
+          <button key={2} onClick={() => alert("fuu")}>Fu</button>
         ]}
         render={(isUrgent) => (
           <p style={{ color: isUrgent ? 'red' : 'black'}}>

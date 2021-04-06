@@ -6,12 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { AppRouterComponent } from './components/AppRouterComponent/AppRouterComponent'
 import store from './redux/store';
 
-const render = () => ReactDOM.render(
-  <React.StrictMode>,
-    <AppRouterComponent isAuthenticated={store.isAuthenticated}/>,
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const render = () => {
+  ReactDOM.render(
+    <AppRouterComponent isAuthenticated={store.getState().isAuthenticated}/>,
+    document.getElementById('root')
+  );
+};
 
 store.subscribe(render);
 

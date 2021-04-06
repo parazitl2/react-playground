@@ -1,7 +1,6 @@
 import { USER_LOGIN, USER_LOGOUT } from './action-types';
 
-
-export const userReducer = (store = {}, action) {
+const userReducer = (store = {}, action) => {
   switch(action.type) {
     case USER_LOGIN:
       return {
@@ -19,6 +18,8 @@ export const userReducer = (store = {}, action) {
       return store;
   }
 };
+
+export default userReducer;
 
 // export const userReducer = (store = {}, action) {
 //   const possible = {

@@ -1,27 +1,28 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectArticles } from '../../ducks/article/selectors';
 
-export class ArticleOverviewComponent extends React.Component {
-  render() {
-    const { title, content, user, createdAt, imageUrl } = this.props;
+export const ArticleOverviewComponent = (props) => {
+  const { id } = useParams();
+  const article = useSelector(selectArticles)[id];
 
-    return (
-      <div>
-        <h2>{title}</h2>
-        <p>{content}</p>
-        <div>{user ? user.username : "Fuck"}</div>
-        <div>{createdAt}</div>
-        {
-          imageUrl
-            ? <img src={imageUrl} alt="Alt" />
-            : imageUrl
-        }
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h2>{article.title}</h2>
+      <p>{article.content}</p>
+      <div>{article.user ? article.user.username : "Fuck"}</div>
+      <div>{article.createdAt}</div>
+      {
+        article.imageUrl
+          ? <img src={article.imageUrl} alt="Alt" />
+          : article.imageUrl
+      }
+    </div>
+  );
 };
 
-ArticleOverviewComponent.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string
-};
+// ArticleOverviewComponent.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   content: PropTypes.string
+// };

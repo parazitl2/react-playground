@@ -2,14 +2,19 @@ import { Counter } from '../CounterComponent/Counter';
 import { Login } from '../LoginComponent/Login';
 import { ArticleOverviewComponent } from '../ArticleOverviewComponent/ArticleOverviewComponent';
 import { NavBarComponent } from '../NavBarComponent/NavBarComponent';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { FeedContainer } from '../../containers/FeedContainer';
 import { NotificationComponent } from '../NotificationComponent/NotificationComponent';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser } from '../../ducks/user/selectors';
+import { actions as userActions} from '../../ducks/user/actions';
 import store from '../../redux/store';
+
 
 function App(props) {
   const [isUrgent, setIsUrgent] = useState(false);
+  const user = useSelector(selectUser);
 
   // useEffect(() => {
   //   setUser(() => fetchUser());
@@ -44,7 +49,7 @@ function App(props) {
 
   return (
     <div>
-      <NavBarComponent user={store.getState().user} isLoggedIn={store.getState().isAuthenticated} />
+      <NavBarComponent user={user} isLoggedIn={store.getState().isAuthenticated} />
       {/* <ArticleOverviewComponent
         title={"Test title"}
         content={"String"}

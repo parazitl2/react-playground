@@ -1,0 +1,3 @@
+export const EDIT_ARTICLE = '@@ARTICLES/EDIT';
+export const CREATE_ARTICLE = '@@ARTICLES/CREATE';
+export const FETCH_ARTICLES = '@@ARTICLES/FETCH';

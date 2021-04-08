@@ -2,11 +2,12 @@ import { CardComponent } from '../CardComponent/CardComponent';
 import PropTypes from 'prop-types';
 
 export function FeedComponent ({ articles }) {
+  console.log(articles)
   return (
     <div>
       { 
-        articles.length 
-          ? articles.map((article) => <CardComponent key={article.id} article={article} />)
+        articles.ids && articles.ids.length 
+          ? articles.ids.map((id) => <CardComponent key={id} article={articles.byId[id]} />)
           : <div>Empty</div>
       }
     </div>
@@ -14,9 +15,9 @@ export function FeedComponent ({ articles }) {
 };
 
 FeedComponent.propTypes = {
-  articles: PropTypes.array
+  articles: PropTypes.object
 };
 
 FeedComponent.defaultProps = {
-  articles: []
+  articles: {}
 }

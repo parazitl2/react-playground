@@ -21,33 +21,31 @@ export const AuthLayoutComponent = ({
   );
 };
 
-// export const AuthLayoutComponent = ({ 
+// import { Redirect, Route } from "react-router-dom";
+// import { Routes } from "../../constants";
+
+// export const AuthLayoutComponent = ({
 //   component: Component,
 //   isAuthenticated,
-//   ...restProps 
+//   path,
+//   ...restProps
 // }) => {
+//   if (
+//     isAuthenticated &&
+//     (restProps.location.pathname === Routes.REGISTER ||
+//       restProps.location.pathname === Routes.LOGIN)
+//   ) {
+//     // если пользователь авторизован, то переходит на роут '/feed'
+//     return <Redirect to={Routes.ROOT} />;
+//   }
+
 //   return (
-//     <Route 
-//       {...restProps} 
-//       render={
-//         props => (
-//           isAuthenticated
-//             ? <Redirect to='/feed'/>
-//             : <Component {...props} />
-//           )
-//       } 
+//     // в ...restProps приходит path, по которому отрендерется компонент
+//     <Route
+//       {...restProps}
+//       render={(props) => {
+//         return <Component {...props} />;
+//       }}
 //     />
 //   );
 // };
-
-// export const AuthLayoutComponent = ({ 
-//     component: Component,
-//     isAuthenticated,
-//     ...restProps 
-//  }) => (
-//   <Route {...restProps} render={(props) => (
-//     isAuthenticated
-//       ? <Component {...props} />
-//       : <Redirect to='/login' />
-//   )} />
-// )
